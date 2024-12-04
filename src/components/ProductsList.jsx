@@ -62,7 +62,8 @@ const jewelsData = [
     description:
       "Diseñados para aportar un toque de brillo discreto y sofisticado. Cada circonita, cuidadosamente engastada a mano, captura la luz desde todos los ángulos, creando un destello elegante y sutil. El accesorio perfecto para quienes buscan una pieza versátil y atemporal.",
   },
-];
+]; // I see that you have also created a JSON file with the data. The problem was that the JSON file doesn't have the images, so I had to create them here, right?
+// another approach could be to add in the json file the array of paths to the images, and add them inside the public folder, so we can access them directly from the json file.
 
 function ProductsList({addChart, setAddChart, chartCount, setChartCount, bagIcon,
   setBagIcon, updateBagIcon}) {
