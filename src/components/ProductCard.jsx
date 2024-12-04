@@ -27,8 +27,8 @@ function ProductsCard({
     const handleResize = () => {
       setIsDesktop(window.innerWidth >= 768);
     };
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    window.addEventListener("resize", handleResize); // when you call this event listener, you access the window object and you listen to the resize event. 
+    return () => window.removeEventListener("resize", handleResize);  // here you are trying to control the unmounting phase of the component. But this component is never unmounted. Is it?
   }, []);
 
   const handleIncrement = () => setNumber(number + 1);
@@ -45,6 +45,19 @@ function ProductsCard({
       prevIndex === 0 ? main_image.length - 1 : prevIndex - 1
     );
   };
+  // handlePrev and handleNext are very similar. You could create a function that receives a parameter and then you can use it for both functions.
+  /*
+  Example:
+  const handleIndex = (index) => {
+    setCurrentIndex((prevIndex) => {
+      if (index === "next") {
+        return prevIndex === main_image.length - 1 ? 0 : prevIndex + 1;
+      } else {
+        return prevIndex === 0 ? main_image.length - 1 : prevIndex - 1;
+      }
+    });
+  };
+  */
 
   const handleAddChart = () => {
     setChartCount(chartCount + number);
@@ -55,7 +68,7 @@ function ProductsCard({
     setTimeout(() => {
       setToggleText("Añadir en el carrito");
       setAddChart(false);
-    }, 3000);
+    }, 3000); // good job, It's a nice touch with the user feedback.
   };
   const [isPopupVisible, setIsPopupVisible] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
@@ -74,15 +87,15 @@ function ProductsCard({
     setBagIcon(chartCount === 0 ? emptyBagIcon : fullBagIcon);
   }, [chartCount, setBagIcon]);
 
-  const handleTouchStart = (e) => {
+  const handleTouchStart = (e) => { // this function is not used.
     setTouchStart(e.targetTouches[0].clientX);
   };
 
-  const handleTouchMove = (e) => {
+  const handleTouchMove = (e) => { // neither this one.
     setTouchEnd(e.targetTouches[0].clientX);
   };
 
-  const handleTouchEnd = () => {
+  const handleTouchEnd = () => { // nor this one.
     if (!touchStart || !touchEnd) return;
 
     const swipeDistance = touchStart - touchEnd;
@@ -100,8 +113,8 @@ function ProductsCard({
     setTouchEnd(null);
   };
 
-  const handleImageClick = () => {
-    handleNext();
+  const handleImageClick = () => { 
+    handleNext(); // You can call handleNext directly in the image tag avoiding the need of this function.
   };
   return (
     <>

@@ -13,7 +13,9 @@ function Navbar({ bagIcon }) {
       if (location.pathname === "/") {
         window.scrollTo({ top: 0, behavior: "smooth" });
       }
-    }, [location]);
+      // I understand that you want to do here. Does the UX team have any feedback on this?
+      // every time we refresh the page, we are taken to the top of it with this smooth scroll effect.
+    }, [location]); // the location never changes because we don't have links. Or we have then but they are not working.
 
     return (
         <nav>

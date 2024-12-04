@@ -8,6 +8,7 @@ function HeroVideo() {
         top: window.innerHeight,
         behavior: "smooth",
       });
+      // nice job on the scroll button! 
     };
   
     return (
@@ -22,6 +23,7 @@ function HeroVideo() {
         >
           <source src={video} type="video/mp4" />
           Your browser does not support the video tag.
+          {/* The video is a nice touch! We have never used it before, nice job by reading the documentation and implementing it!*/}
         </video>
 
         <button className="scroll-button" onClick={handleScroll}>
